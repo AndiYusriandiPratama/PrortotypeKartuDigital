@@ -1,296 +1,190 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistem Monitoring SPOPNAS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Kartu Kendali Digital SPOPNAS</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-body{
-    background:linear-gradient(135deg,#0f172a,#1e3a8a);
-    padding:40px 15px;
-    display:flex;
-    justify-content:center;
-}
-
-.container{
-    width:100%;
-    max-width:1000px;
-    background:white;
-    border-radius:18px;
-    box-shadow:0 25px 50px rgba(0,0,0,0.25);
-    overflow:hidden;
-    animation:fadeIn .7s ease;
-}
-
-header{
-    padding:30px;
-    text-align:center;
-}
-
-header h1{
-    font-size:18px;
-    font-weight:600;
-    color:#1e3a8a;
-}
-
-header h2{
-    font-size:20px;
-    margin-top:8px;
-    font-weight:700;
-}
-
-.divider{
-    height:4px;
-    background:#2563eb;
-}
-
-.section{
-    padding:25px 35px;
-    border-bottom:1px solid #f1f5f9;
-}
-
-.section h3{
-    font-size:16px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:15px;
-}
-
-.card{
-    background:#f8fafc;
-    padding:14px 16px;
-    border-radius:12px;
-    font-size:14px;
-}
-
-.badge{
-    display:inline-block;
-    padding:6px 15px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:600;
-    color:white;
-}
-
-.baik{background:#16a34a;}
-.rusak{background:#dc2626;}
-.perbaikan{background:#f59e0b;}
-
-button{
-    margin-top:10px;
-    padding:8px 14px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:500;
-}
-
-.btn-baik{background:#16a34a;color:white;}
-.btn-rusak{background:#dc2626;color:white;}
-.btn-perbaikan{background:#f59e0b;color:white;}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:13px;
-}
-
-th,td{
-    padding:10px;
-    text-align:left;
-}
-
-th{
-    background:#2563eb;
-    color:white;
-}
-
-tr:nth-child(even){
-    background:#f8fafc;
-}
-
-.photos{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.photos img{
-    width:200px;
-    height:140px;
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.2);
-    transition:.3s;
-}
-
-.photos img:hover{
-    transform:scale(1.05);
-}
-
-footer{
-    text-align:center;
-    padding:15px;
-    font-size:12px;
-    background:#f1f5f9;
-}
-
-@keyframes fadeIn{
-    from{opacity:0;transform:translateY(15px);}
-    to{opacity:1;transform:translateY(0);}
-}
-</style>
 </head>
 
 <body>
 
 <div class="container">
 
-<header>
-    <div><link rel="stylesheet" href="https://www.kemenpora.go.id/assets/img/logo-tagline.png"></div>
-    <div>
-        <h1>DINAS KEPEMUDAAN DAN OLAHRAGA</h1>
-    <h1>PROVINSI SULAWESI TENGGARA</h1>
-    <h2>SISTEM MONITORING BANTUAN SPOPNAS</h2>
-    <h2>KARTU KENDALI DIGITAL INVENTARIS</h2>
-    </div>
-    
+<!-- HEADER -->
+<header class="header">
+
+<h1>
+DINAS KEPEMUDAAN DAN OLAHRAGA<br>
+PROVINSI SULAWESI TENGGARA
+</h1>
+
+<h2>
+SISTEM MONITORING BANTUAN SPOPNAS<br>
+KARTU KENDALI DIGITAL INVENTARIS
+</h2>
+
 </header>
 
-<div class="divider"></div>
+<div class="blue-line"></div>
 
-<!-- IDENTITAS -->
-<div class="section">
-<h3>📦 IDENTITAS BARANG</h3>
-<div class="grid">
-<div class="card"><b>Kode Inventaris:</b> SPO-ATL-023</div>
-<div class="card"><b>Nama Barang:</b> Matras Senam Standar Nasional</div>
-<div class="card"><b>Nomor Unit:</b> MAT-023</div>
-<div class="card"><b>Jumlah Total:</b> 70 Unit</div>
-<div class="card"><b>Tahun Bantuan:</b> 2024</div>
-<div class="card"><b>Sumber Anggaran:</b> APBN - Program SPOPNAS</div>
-<div class="card"><b>Lokasi:</b> Gudang Sarpras Dispora</div>
-<div class="card"><b>Penanggung Jawab:</b> Tim Pengelola Sarana & Prasarana</div>
-</div>
+
+<!-- IDENTITAS BARANG -->
+<section class="section">
+
+<h3>📦 Identitas Barang</h3>
+
+<div class="info-grid">
+
+<div class="info-item">
+<strong>Kode Unit</strong>
+<span id="kodeUnit">-</span>
 </div>
 
-<!-- STATUS -->
-<div class="section">
-<h3>📊 STATUS KONDISI TERKINI</h3>
-<p><b>Status:</b> <span id="status" class="badge baik">Baik</span></p>
-<p><b>Terakhir Dicek:</b> <span id="tanggal">18 Maret 2026</span></p>
-<p><b>Diperiksa Oleh:</b> Admin Sarpras</p>
-<br>
-<p><b>Catatan:</b> Inventaris dalam kondisi optimal dan siap digunakan untuk kegiatan pembinaan atlet.</p>
+<div class="info-item">
+<strong>Nama Barang</strong>
+<span id="namaBarang">-</span>
+</div>
 
-<br>
-<button class="btn-baik" onclick="ubahStatus('Baik')">Set Baik</button>
-<button class="btn-perbaikan" onclick="ubahStatus('Perbaikan')">Set Perbaikan</button>
-<button class="btn-rusak" onclick="ubahStatus('Rusak')">Set Rusak</button>
+<div class="info-item">
+<strong>Jenis</strong>
+<span id="jenisBarang">-</span>
+</div>
+
+<div class="info-item">
+<strong>Merek / Spesifikasi</strong>
+<span id="merekBarang">-</span>
+</div>
+
+<div class="info-item">
+<strong>Nomor Unit</strong>
+<span id="nomorUnit">-</span>
+</div>
+
+<div class="info-item">
+<strong>Satuan</strong>
+<span id="satuan">-</span>
+</div>
+
+<div class="info-item">
+<strong>Lokasi</strong>
+<span id="lokasi">-</span>
+</div>
+
+<div class="info-item">
+<strong>Petugas</strong>
+<span id="petugas">-</span>
+</div>
+
+<div class="info-item">
+<strong>Tanggal Input</strong>
+<span id="tanggalInput">-</span>
+</div>
+
+<div class="info-item">
+<strong>Update Terakhir</strong>
+<span id="updateTerakhir">-</span>
+</div>
+
+<div class="info-item full">
+<strong>Catatan</strong>
+<span id="catatan">-</span>
+</div>
 
 </div>
+
+</section>
+
+
+<!-- STATUS KONDISI -->
+<section class="section">
+
+<h3>📊 Status Kondisi Terkini</h3>
+
+<div class="status-box">
+
+<span id="statusBadge" class="status-badge baik">
+Baik
+</span>
+
+<p class="status-date">
+Terakhir Dicek:
+<span id="tanggalCek">-</span>
+</p>
+
+</div>
+
+<div class="status-buttons">
+
+<button class="btn-baik" id="btnBaik" onclick="ubahStatus('Baik')">
+Baik
+</button>
+
+<button class="btn-rusak" id="btnRusak" onclick="ubahStatus('Rusak')">
+Rusak
+</button>
+
+<button class="btn-perbaikan" id="btnperbaikan" onclick="ubahStatus('perbaikan')">
+perbaikan
+</button>
+
+</div>
+
+</section>
+
 
 <!-- RIWAYAT -->
-<div class="section">
-<h3>🔄 RIWAYAT MONITORING</h3>
-<table>
+<section class="section">
+
+<h3>🔄 Riwayat Monitoring</h3>
+
+<table class="table-riwayat">
+
 <thead>
+
 <tr>
 <th>Tanggal</th>
 <th>Kondisi</th>
-<th>Catatan</th>
 <th>Petugas</th>
 </tr>
+
 </thead>
-<tbody id="riwayat">
+
+<tbody id="riwayatTable">
+
 <tr>
-<td>01/02/2026</td>
-<td>Baik</td>
-<td>Siap latihan atlet</td>
-<td>Andi Y.</td>
-</tr>
-<tr>
-<td>15/02/2026</td>
-<td>Baik</td>
-<td>Pengecekan rutin</td>
-<td>Admin Sarpras</td>
-</tr>
-<tr>
-<td>18/03/2026</td>
-<td>Baik</td>
 <td>-</td>
-<td>Admin Sarpras</td>
+<td>-</td>
+<td>-</td>
 </tr>
+
 </tbody>
+
 </table>
+
+</section>
+
+
+<!-- FOTO BARANG -->
+<section class="section foto">
+
+<h3>📸 Dokumentasi Barang</h3>
+
+<img id="fotoBarang"
+src="https://via.placeholder.com/300"
+alt="Foto Barang">
+
+</section>
+
+
 </div>
 
-<!-- FOTO -->
-<div class="section">
-<h3>📸 DOKUMENTASI</h3>
-<div class="photos">
-<img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
-</div>
-</div>
-
-<footer>
-Sistem Monitoring Inventaris Digital © 2026 - Dispora Sulawesi Tenggara
-</footer>
-
-</div>
-
-<script>
-function ubahStatus(statusBaru){
-
-let badge=document.getElementById("status");
-let tanggal=document.getElementById("tanggal");
-let riwayat=document.getElementById("riwayat");
-
-badge.className="badge";
-
-if(statusBaru==="Baik"){
-badge.classList.add("baik");
-}
-else if(statusBaru==="Rusak"){
-badge.classList.add("rusak");
-}
-else{
-badge.classList.add("perbaikan");
-}
-
-badge.innerText=statusBaru;
-
-let today=new Date().toLocaleDateString("id-ID");
-tanggal.innerText=today;
-
-let row=document.createElement("tr");
-row.innerHTML=`
-<td>${today}</td>
-<td>${statusBaru}</td>
-<td>Update status oleh sistem</td>
-<td>Admin</td>
-`;
-
-riwayat.appendChild(row);
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
